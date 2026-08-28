@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yorokobi3Space</title>
+    <style>
+        /* 🎨 THE FRUTIGER AERO GLOBAL THEME */
+        body {
+            background: linear-gradient(135deg, #e0f7fa, #e8f5e9, #f3e5f5);
+            background-attachment: fixed;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333333;
+        }
+
+        /* ☰ TOP OPTIONS BAR (Links to Profile Menu Panel) */
+        .top-bar {
+            padding: 15px 20px;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        .top-bar a {
+            text-decoration: none;
+            color: #3f1785;
+        }
+
+        /* 👤 THE CENTRAL MAIN APP WORKSPACE */
+        .app-container {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+            padding-bottom: 90px; 
+        }
+
+        /* 🌐 GLOSSY GLASS CONTAINER STENCIL */
+        .glass-box {
+            background: rgba(255, 255, 255, 0.45);
+            border: 2px solid #ffffff;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.08);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 25px;
+            backdrop-filter: blur(4px);
+        }
+
+        /* 🖼️ PROFILE PICTURE CONTAINER */
+        .profile-pic-container {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 15px auto;
+            border-radius: 50%;
+            border: 4px solid #00bcd4;
+            background-color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        h2, h3 { color: #3f1785; margin-top: 0; }
+        .bio-text { color: #555555; font-size: 15px; font-family: monospace; }
+
+        /* 📝 TEXTAREA & INPUT FIELDS */
+        textarea, input[type="text"] {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.7);
+            border: 1px solid #00bcd4;
+            border-radius: 10px;
+            padding: 12px;
+            box-sizing: border-box;
+            resize: none;
+            color: #333333;
+            font-family: inherit;
+            margin-bottom: 10px;
+        }
+
+        /* 🔘 GLASSY BUTTONS */
+        .submit-btn {
+            background-color: #00bcd4; color: white; border: none;
+            padding: 10px 24px; border-radius: 20px; font-weight: bold;
+            cursor: pointer;
+        }
+        .action-btn {
+            background-color: transparent; border: 1px solid #00bcd4; color: #00bcd4;
+            padding: 6px 14px; border-radius: 15px; font-size: 12px; font-weight: bold;
+            cursor: pointer; margin-right: 10px;
+        }
+
+        /* 📱 FIXED BOTTOM NAVIGATION BAR */
+        .bottom-nav {
+            position: fixed; bottom: 0; left: 0; right: 0; height: 70px;
+            background: rgba(224, 247, 250, 0.9); border-top: 2px solid #00bcd4;
+            backdrop-filter: blur(12px); display: flex;
+            justify-content: space-around; align-items: center; z-index: 1000;
+        }
+        .nav-item { text-align: center; color: #3f1785; text-decoration: none; font-size: 13px; font-weight: bold; flex-grow: 1; }
+        .nav-item span { display: block; font-size: 22px; }
+
+        /* 🔮 SCREEN CONTROLLER LOGIC */
+        .tab-content { display: none; }
+        #feed-view { display: block; }
+        #personal-view:target, #live-chat-view:target, #feed-view:target, #menu-profile-view:target { display: block; }
+        #personal-view:target ~ #feed-view, #live-chat-view:target ~ #feed-view, #menu-profile-view:target ~ #feed-view { display: none; }
+    </style>
+</head>
+<body>
+
+    <!-- ☰ 1. Top Options Bar linked directly to your Profile Options Hub Section -->
+    <div class="top-bar"><a href="#menu-profile-view">☰</a></div>
+
+    <main class="app-container">
+
+        <!-- ================= CONTAINER 1: PROFILE OPTIONS HUB (MENU LINK) ================= -->
+        <div id="menu-profile-view" class="tab-content">
+            <div class="glass-box">
+                <h3>🛠️ Edit Profile Hub</h3>
+                <div class="profile-pic-container">
+                    <p>[ Yorokobi Drawing ]</p>
+                </div>
+                <input type="text" placeholder="Change Display Name (e.g. @yorokobi)">
+                <textarea rows="2" placeholder="Update your custom bio description..."></textarea>
+                <br><br>
+                <button type="button" class="submit-btn" style="background-color: #3f1785;">Save Profile Data</button>
+            </div>
+        </div>
+
+        <!-- ================= CONTAINER 2: PERSONAL PRIVATE LOG ================= -->
+        <div id="personal-view" class="tab-content">
+            <div class="glass-box">
+                <h3>👥 Personal Direct Messages</h3>
+                <p style="color: #666; font-size: 14px;">Your private chat conversations and messages with friends will load here.</p>
+            </div>
+        </div>
+
+        <!-- ================= CONTAINER 3: THE FRESH MAIN GLOBAL FEED ================= -->
+        <div id="feed-view" class="tab-content-default">
+            
+            <!-- User Post Submission Interface -->
+            <div class="glass-box">
+                <h3>✦ Post to the Feed ✦</h3>
+                <form action="#" method="POST" onsubmit="return false;">
+                    <textarea name="user_message" rows="3" placeholder="Share a cozy thought..."></textarea>
+                    <br><br>
+                    <button type="submit" class="submit-btn">Post Update</button>
+                </form>
+            </div>
+
+            <!-- Clean, Empty Feed Notification (No more mock users!) -->
+            <div class="glass-box" style="text-align: center; border-style: dashed; border-color: #00bcd4;">
+                <p style="color: #666; font-style: italic; margin: 0;">Your live public content thread is active. Waiting for posts...</p>
+            </div>
+            
+        </div>
+
+        <!-- ================= CONTAINER 4: GLOBAL LIVE CHAT WINDOW ================= -->
+        <div id="live-chat-view" class="tab-content">
+            <div class="glass-box">
+                <h3>💬 Live Chat Room</h3>
+                <div style="background: rgba(255,255,255,0.5); padding: 15px; border-radius: 10px; height: 200px; text-align: center; display: flex; align-items: center; justify-content: center; margin-bottom: 15px;">
+                    <p style="color: #777; font-size: 14px; font-style: italic;">Welcome to the global lounge. Connect with other users in real-time.</p>
+                </div>
+                <textarea rows="2" placeholder="Type a global message line..."></textarea>
+                <br><br>
+                <button type="button" class="submit-btn" style="background-color: #3f1785;">Send Line</button>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- 📱 3. Fixed Bottom Navigation Tabs (Completely visible on Netlify Drop!) -->
+    <nav class="bottom-nav">
+        <a href="#personal-view" class="nav-item"><span>👤</span>Personal</a>
+        <a href="#feed-view" class="nav-item"><span>📱</span>Feed</a>
+        <a href="#live-chat-view" class="nav-item"><span>💬</span>Live Chat</a>
+    </nav>
+
+</body>
+</html>
