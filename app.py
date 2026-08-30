@@ -11,7 +11,8 @@ FEED_POSTS = [
 # 🏠 Rule 1: When someone loads the page, show them your HTML layout
 @app.route('/')
 def home():
-    return render_template('index.html', posts=FEED_POSTS)
+        return render_template('index.html', posts=FEED_POSTS)
+
 
 # 📬 Rule 2: When someone clicks "Post Update", catch their text and save it
 @app.route('/save', methods=['POST'])
