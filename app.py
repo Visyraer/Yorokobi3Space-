@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, redirect
 
-app = Flask(__name__, template_folder='.')
+app = Flask(__name__)
 
 # This is our temporary storage room for your social posts
 FEED_POSTS = [
