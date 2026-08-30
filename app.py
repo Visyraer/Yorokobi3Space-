@@ -1,12 +1,13 @@
-import os
+ import os
 from flask import Flask, render_template, request, redirect
 
-app = Flask(__name__)
+# 🌟 THE MASTER OVERRIDE: We tell Flask to look directly at the root folder path
+app = Flask(__name__, template_folder='.')
 
 # This is our temporary storage room for your social posts
 FEED_POSTS = []
 
-# 🏠 Rule 1: Show your HTML layout out of the templates folder
+# 🏠 Rule 1: Show your HTML layout right out of the primary folder
 @app.route('/')
 def home():
     return render_template('index.html', posts=FEED_POSTS)
